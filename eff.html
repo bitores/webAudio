@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width,initial-scale=1.0,user-scalable=no'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <style type="text/css">
+    *{padding: 0;margin: 0;box-sizing: border-box;}
+    .container {
+        padding: 1rem;
+        display: block;
+        width: 100%;
+        height: 300px;
+        
+
+        /*for scrollbar*/
+        position: relative;
+        overflow: hidden;
+    }
+    .container .progress-bar {
+        display: block;
+        width: 100%;
+        height: 2rem;
+        background: #ccc;
+        border-radius: 1rem;
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+
+    .container .progress-bar .progress {
+        display: block;
+        width: 10%;
+        height: 2rem;
+        line-height: 2rem;
+        background: #FF7206;
+        animation: grow 5s both;
+        text-align: right;
+        padding-right: 1rem;
+        color: white;
+    }
+
+    @keyframes grow {
+        from{
+            width: 10%;
+        }
+        to{
+            width: 60%;
+        }
+    }
+
+    .scroll-bar{
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: block;
+        width: 2rem;
+        background: #999;
+        z-index: 100;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .scroll-bar .scroll-handle{
+        display: block;
+        width: 100%;
+        background: #FF7206;
+        height: 100px;
+        border-radius: 1rem;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .bb {
+        display: block;
+        width: 2rem;height: 2rem;
+        background: #FF7206;
+        color: white;
+        border-radius: 1rem;
+        text-align: center;
+        line-height: 2rem;
+        /*font-weight: bold;*/
+        font-size: 2rem;
+        transform: rotate(45deg);
+        transition: all 1s;
+    }
+
+    .bb:hover{
+        /*pc 效果，移动端须点击才hover*/
+        transition: all 1s;
+        transform: rotate(405deg);
+    }
+    .demo1{
+        display: inline-block;
+        padding: 0 0.5rem;
+        height: 2rem;
+        background: #FF7206;
+        overflow: hidden;
+    }
+    .demo1 span{
+        display: inline-block;
+        width: 2px;
+        height: 1.0rem;
+        margin-top: 1rem;
+        margin-right:2px;
+        background: white;
+        animation: loader 1s infinite
+    }
+
+    .demo1 span:nth-child(1){
+        animation-delay: 0.1s;
+    }
+    .demo1 span:nth-child(2){
+        animation-delay: 0.2s;
+    }
+    .demo1 span:nth-child(3){
+        animation-delay: 0.3s;
+    }
+    .demo1 span:nth-child(4){
+        animation-delay: 0.4s;
+    }
+    
+    @keyframes loader {
+        0%{
+            margin-top: 1.0rem;
+            height: 1.0rem;
+        }
+        50%{
+            margin-top: 0.0rem;
+            height: 2.0rem;
+        }
+        100%{
+            margin-top: 1.0rem;
+            height: 1.0rem;
+        }
+    }
+
+    .demo2{
+        display: inline-block;
+        padding: 0 0.5rem;
+        height: 2rem;
+        background: #FF7206;
+    }
+    .demo2 span{
+        display: inline-block;
+        width: 1rem;
+        height: 2rem;
+        /*margin-top: 1rem;*/
+        margin-right: 2px;
+        background: white;
+        animation: loader2 1s infinite ease-in-out;
+    }
+
+    .demo2 span:nth-child(1){
+        background: red;
+        animation-delay: 0.1s;
+    }
+    .demo2 span:nth-child(2){
+        background: green;
+        animation-delay: 0.3s;
+    }
+    .demo2 span:nth-child(3){
+        background: black;
+        animation-delay: 0.5s;
+    }
+    .demo2 span:nth-child(4){
+        background: yellow;
+        animation-delay: 0.7s;
+    }
+    
+    @keyframes loader2 {
+        0%{
+            /*margin-top: 1.0rem;
+            height: 1.0rem;*/
+            transform: scaleY(1.0);
+        }
+        50%{
+            /*margin-top: 0.0rem;
+            height: 2.0rem;*/
+            transform: scaleY(0.2);
+        }
+        100%{
+            /*margin-top: 1.0rem;
+            height: 1.0rem;*/
+            transform: scaleY(1.0);
+        }
+    }
+
+    .demo3 {
+        display: inline-block;
+        width: 5rem;
+        height: 5rem;
+        background: #FF7206;
+        animation: rotatePlane 1s infinite;
+    }
+    .demo3 .icon {
+        display: inline-block;
+        width: 2rem;
+        height: 5rem;
+        background: url(view.png) no-repeat center center;
+        background-size: 2rem auto;
+    }
+
+    @keyframes rotatePlane {
+        0%{
+            transform: rotateX(0deg) rotateY(0deg);
+        }
+        50%{
+            transform: rotateX(-180deg) rotateY(0deg);
+        }
+        100%{
+            transform: rotateX(-180deg) rotateY(-180deg);
+        }
+    }
+    .demo4 {
+        display: inline-block;
+        width: 6rem;
+        height: 6rem;
+        position: relative;
+        -webkit-transform-style:preserve-3d;
+    }
+    .demo4 span {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 6rem;
+        font-size: 2rem;
+        background: #FF7206;
+        color: white;
+    }
+    .demo4 span:nth-child(1){
+        background: #ccc;
+        transform: rotateX(90deg) translateZ(3rem);
+    }
+    .demo4 span:nth-child(1){background:rgba(255,0,0,1);transform:rotateX(90deg)   translateZ(3rem);}
+    .demo4 span:nth-child(2){background:rgba(0,255,255,1);transform:rotateX(270deg)  translateZ(3rem);}
+    .demo4 span:nth-child(3){background:rgba(255,0,255,1);transform:rotateY(90deg) translateZ(3rem);}
+    .demo4 span:nth-child(4){background:rgba(0,255,0,1);transform:rotateY(270deg) translateZ(3rem);}
+    .demo4 span:nth-child(5){background:rgba(200,200,0,1);transform:translateZ(-3rem);}
+    .demo4 span:nth-child(6){background:rgba(0,0,255,1);transform: translateZ(3rem) ;}
+
+    .calc-c{
+        display: block;
+        width: 100%;
+        height: 3rem;
+    }
+
+    .calc-c .right{
+        display: inline-block;
+        width: 3rem;
+        border: 1px solid #ccc;
+    }
+
+    .calc-c .left {
+        display: inline-block;
+        width: calc(100% - 3rem);
+        border: 1px solid #999;
+    }
+
+    .demo {
+        width: 300px;
+        background: #60f;
+        padding: 3px 0;
+        margin: 0 auto;
+    }
+
+    .demo .box {
+        
+        background: #f60;
+        height: 50px;
+        padding: 10px;
+        border: 5px solid green;
+        /*width: 100%;*/
+        width: 90%;
+        width:-moz-calc(100% - (10px + 5px) * 2);
+        width:-webkit-calc(100% - (10px + 5px) * 2); 
+        width: calc(100% - (10px + 5px) * 2);
+    }
+
+    .ul{
+        display: block;
+        width: 100%;
+        height: 3rem;
+        border: 1px solid #999;
+        position: relative;
+        text-align: center;
+    }
+
+    .ul .li{
+        display: inline-block;
+        height: 3rem;
+        line-height: 3rem;
+        padding: 0 0.2rem;
+        z-index: 12;
+    }
+
+
+    .ul .sc{
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        width: 0rem;
+        background: rgba(180,250,50,0.5);
+        pointer-events: none;
+        transition: all 1s cubic-bezier(.8,-.5,.2,1.4);/*cubic-bezier(0.5,0.5,0.5,0.4);*/
+
+       /* top: 0;
+        height: 3rem;*/
+
+        bottom: 0;
+        height: 0.2rem;
+    }
+    </style>
+  </head>
+  <body>
+  <div class="demo">
+      <div class="box"></div>
+  </div>
+  <div id="container" class="container" style="display:none">
+      <div class="progress-bar">
+          <div class="progress">25%</div>
+      </div>
+
+      <div class="progress-bar">
+          <div class="progress">25%</div>
+      </div>
+
+      <div class="progress-bar">
+          <div class="progress">25%</div>
+      </div>
+
+      <div class="progress-bar">
+          <div class="progress">25%</div>
+      </div>
+
+      <div class="progress-bar">
+          <div class="progress">25%</div>
+      </div>
+
+      <div class="progress-bar">
+          <div class="progress">25%</div>
+      </div>
+
+      <div class="progress-bar">
+          <div class="progress">25%</div>
+      </div>
+
+      <div class="progress-bar">
+          <div class="progress">25%</div>
+      </div>
+      <div class="scroll-bar">
+          <div class="scroll-handle"></div>
+      </div>
+  </div>
+  <div class="bb">+</div>
+  <div class="demo1">
+      <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="demo2">
+      <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="demo3">
+      <!-- <div class="icon"></div> -->
+  </div>
+  <div class="demo4">
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+      <span>6</span>
+  </div>
+
+  <div class="calc-c">
+      <span class="left"></span><span class="right">按钮</span>
+  </div>
+
+  <div class="ul">
+      <div class="sc"></div><div class="li">菜单</div><div class="li">马到功成</div><div class="li">停车爱</div><div class="li">放下屠刀成佛</div>
+  </div>
+  <script>
+    function $_(ele){
+            return document.querySelector(ele);
+    }
+
+    function $all_(ele){
+        return document.querySelectorAll(ele);
+    }
+
+    function bindEvent(ele,eventName, callback) {
+        var eles = $all_(ele);
+        for (var i = eles.length - 1; i >= 0; i--) {
+            eles[i].addEventListener(eventName, callback)
+        }
+    }
+
+    function bind(ele, eventName, callback) {
+        var eles = $all_(ele);
+        for (var i = eles.length - 1; i >= 0; i--) {
+            eles[i].addEventListener(eventName, callback)
+        }
+    }
+
+    // function ss() {
+    //     $_('')
+    // }
+
+    // ss();
+
+    function bindTab(ele,eventName, callback) {
+        var eles = $all_(ele);
+        $_('.ul .sc').style.left=eles[0].offsetLeft + 'px';
+        $_('.ul .sc').style.width=eles[0].offsetWidth + 'px';
+        for (var i = eles.length - 1; i >= 0; i--) {
+            eles[i].addEventListener(eventName, callback)
+        }
+    }
+
+    bindTab('.ul .li', 'touchstart', function(ev){
+        console.log(ev.target.offsetWidth,ev.target.offsetLeft);
+        // $_('.ul .sc').style.
+        $_('.ul .sc').style.left=ev.target.offsetLeft + 'px';
+        $_('.ul .sc').style.width=ev.target.offsetWidth + 'px';
+    })
+
+
+    bind('.bb', 'mouseover', function(){
+        console.log('mouseover');
+    })
+
+    bind('.bb', 'mouseout', function(){
+        console.log('mouseout');
+    })
+
+    function getHeight(ele) {
+        return $_(ele).offsetHeight;
+    }
+
+    function getScrollHeight(ele) {
+        return $_(ele).scrollHeight;
+    }
+
+    function bindBar() {
+        var lastX = 0, lastY = 0, offsetTop = 0, detaX, detaY;
+        $_('.scroll-bar').addEventListener('touchstart',function(event){
+            if (event.targetTouches.length == 1){
+                var touch = event.targetTouches[0];
+               // 把元素放在手指所在的位置
+                lastX = touch.pageX;
+                lastY = touch.pageY;
+                
+                offsetTop = $_('.scroll-handle').offsetTop
+            }
+        }, false)
+
+        $_('.scroll-bar').addEventListener('touchmove',function(event){
+            if (event.targetTouches.length == 1){
+                var touch = event.targetTouches[0];
+               // 把元素放在手指所在的位置
+                detaX = touch.pageX - lastX;
+                detaY = touch.pageY - lastY;
+              
+                $_('.scroll-handle').style.top = (offsetTop + detaY) +'px';
+                console.log(detaY)
+            }
+        }, false)
+
+        $_('.scroll-bar').addEventListener('touchend',function(event){
+            console.log(event)
+                var touch = event.changedTouches[0];
+               // // 把元素放在手指所在的位置
+                lastX = touch.pageX;
+                lastY = touch.pageY;
+        }, false)
+    }
+
+    bindBar();
+
+    function ScrollBar(opts){
+
+    }
+
+    $_('.bb').addEventListener('webkitTransitionEnd', function () {
+        console.log('动画执行完毕！');
+    // callback here
+    }, false);
+    $_('.demo3').addEventListener('webkitAnimationIteration', function(){
+        console.log('animationEnd')
+    })
+
+  </script>
+  </body>
+</html>
